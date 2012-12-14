@@ -1,0 +1,34 @@
+[global_config]
+  window_state = fullscreen
+  scrollbar_position = disabled
+  borderless = True
+[keybindings]
+  toggle_zoom = F12
+  search = <Super>f
+  group_tab = <Super>z
+  resize_up = <Alt>Up
+  broadcast_group = <Primary>g
+  resize_left = <Alt>Left
+  split_horiz = <Alt>v
+  broadcast_all = <Primary>a
+  close_term = <Alt>c
+  split_vert = <Alt>h
+  broadcast_off = <Primary>n
+  resize_right = <Alt>Right
+  resize_down = <Alt>Down
+[profiles]
+  [[default]]
+    use_system_font = False
+    font = Mono 8
+    icon_bell = False
+    split_to_group = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
