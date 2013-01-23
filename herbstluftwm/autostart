@@ -18,7 +18,7 @@ Mod=Super #set super as the modifier key to be used in keybindings
 hc keybind $Mod-Control-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind Alt-F4 close
-hc keybind $Mod-t spawn terminator
+hc keybind $Mod-t spawn xterm tmux #terminator
 hc keybind $Mod-m spawn thunderbird
 hc keybind $Mod-space spawn dmenu_run  -fn -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-* -nb rgb:00/00/00 -nf rgb:CC/CC/CC -sb rgb:CC/CC/CC -sf rgb:33/33/33
 hc keybind $Mod-Escape spawn slock 
@@ -63,6 +63,17 @@ hc use 2
 hc split horizontal 0.333
 hc focus right
 hc split horizontal 0.5
+
+hc use 3
+hc split horizontal 0.333
+hc focus right
+hc split horizontal 0.5
+
+hc use 4
+hc split horizontal 0.333
+hc focus right
+hc split horizontal 0.5
+
 hc use 1
 
 # resizing
@@ -99,10 +110,10 @@ hc set frame_border_normal_color '#73532D'
 #hc set frame_bg_active_color '#BD8541'
 hc set frame_bg_normal_color '#ffffff'
 hc set frame_bg_active_color '#ffffff'
-hc set frame_border_width 2
-hc set window_border_width 2 
+hc set frame_border_width 1
+hc set window_border_width 1 
 hc set window_border_normal_color '#AE8451'
-hc set window_border_active_color '#F6FF00'
+hc set window_border_active_color '#Ff0000'
 hc set focus_follows_mouse 1
 
 # rules
@@ -112,4 +123,4 @@ hc rule focus=off # normally do not focus new clients
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 
 #the panel 
-#sh $HOME/.config/herbstluftwm/panel.sh
+sh $HOME/.config/herbstluftwm/panel.sh

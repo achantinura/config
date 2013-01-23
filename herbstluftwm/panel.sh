@@ -11,7 +11,7 @@ herbstclient pad 0 7
 FG='white'
 BG='black'
 FONT="-*-*-*-*-*-*-10-*-*-*-*-*-*-*"
-WIDTH=1366 #hier Breite des Monitors in px eintragen
+WIDTH=1680 #hier Breite des Monitors in px eintragen
 
 #the actual panel
 addpanelcontent()
