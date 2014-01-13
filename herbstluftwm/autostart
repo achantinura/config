@@ -21,11 +21,11 @@ hc keybind Alt-F4 close
 hc keybind $Mod-t spawn xterm tmux #terminator
 hc keybind $Mod-m spawn thunderbird
 hc keybind $Mod-space spawn dmenu_run  -fn -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-* -nb rgb:00/00/00 -nf rgb:CC/CC/CC -sb rgb:CC/CC/CC -sf rgb:33/33/33
-hc keybind $Mod-Escape spawn slock 
+hc keybind $Mod-Escape spawn slock
 
 # my own keybindings
-hc keybind $Mod-w spawn firefox
-hc keybind $Mod-e spawn eclipse
+hc keybind $Mod-w spawn chromium-browser 
+hc keybind $Mod-e spawn texstudio
 
 # tile background transparency
 hc set frame_bg_transparent "1"
@@ -40,7 +40,7 @@ hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
 
-hc split horizontal 0.333
+hc split horizontal 0.3333
 hc focus right
 hc split horizontal 0.5
 
@@ -60,24 +60,49 @@ for i in ${!TAG_NAMES[@]} ; do
 done
 
 hc use 2
-hc split horizontal 0.333
+hc split horizontal 0.3333
 hc focus right
 hc split horizontal 0.5
 
 hc use 3
-hc split horizontal 0.333
+hc split horizontal 0.3333
 hc focus right
 hc split horizontal 0.5
 
 hc use 4
-hc split horizontal 0.333
+hc split horizontal 0.3333
+hc focus right
+hc split horizontal 0.5
+
+hc use 5
+hc split horizontal 0.3333
+hc focus right
+hc split horizontal 0.5
+
+hc use 6
+hc split horizontal 0.3333
+hc focus right
+hc split horizontal 0.5
+
+hc use 7
+hc split horizontal 0.3333
+hc focus right
+hc split horizontal 0.5
+
+hc use 8
+hc split horizontal 0.3333
+hc focus right
+hc split horizontal 0.5
+
+hc use 9
+hc split horizontal 0.3333
 hc focus right
 hc split horizontal 0.5
 
 hc use 1
 
 # resizing
-RESIZESTEP=0.01
+RESIZESTEP=0.0025
 hc keybind $Mod-Control-h resize left +$RESIZESTEP
 hc keybind $Mod-Control-j resize down +$RESIZESTEP
 hc keybind $Mod-Control-k resize up +$RESIZESTEP
@@ -121,6 +146,9 @@ hc unrule -F
 hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+
+#start monitor
+sh $HOME/.config/monitor/monitor.sh
 
 #the panel 
 sh $HOME/.config/herbstluftwm/panel.sh
