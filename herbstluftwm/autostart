@@ -148,6 +148,8 @@ hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 
+xautolock -time 2 -locker slock -killtime 20 &
+
 #start monitor
 sh $HOME/.config/monitor/monitor.sh
 
