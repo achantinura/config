@@ -18,7 +18,7 @@ Mod=Super #set super as the modifier key to be used in keybindings
 hc keybind $Mod-Control-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind Alt-F4 close
-hc keybind $Mod-t spawn xterm tmux #terminator
+hc keybind $Mod-t spawn terminator
 hc keybind $Mod-m spawn thunderbird
 hc keybind $Mod-space spawn dmenu_run  -fn -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-* -nb rgb:00/00/00 -nf rgb:CC/CC/CC -sb rgb:CC/CC/CC -sf rgb:33/33/33
 hc keybind $Mod-Escape spawn slock
@@ -60,14 +60,13 @@ for i in ${!TAG_NAMES[@]} ; do
 done
 
 hc use 2
-hc split horizontal 0.3333
-hc focus right
-hc split horizontal 0.5
+hc split horizontal 0.6666
 
 hc use 3
 hc split horizontal 0.3333
 hc focus right
 hc split horizontal 0.5
+hc split vertical 0.5
 
 hc use 4
 hc split horizontal 0.3333
@@ -100,7 +99,16 @@ hc focus right
 hc split horizontal 0.5
 
 hc use 1
-hc focus right
+#hc focus right
+# hc split vertical 0.3333
+# hc focus down
+# hc split vertical 0.5
+# hc focus down
+# hc split horizontal 0.5
+# hc focus up
+# hc split horizontal 0.5
+# hc focus up
+# hc split horizontal 0.5
 
 # resizing
 RESIZESTEP=0.0025
@@ -148,10 +156,12 @@ hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 
-xautolock -time 2 -locker slock -killtime 20 &
+xautolock -time 10 -locker slock &
 
 #start monitor
 sh $HOME/.config/monitor/monitor.sh
+
+feh --bg-tile $HOME/.config/herbstluftwm/bg.png
 
 #the panel 
 sh $HOME/.config/herbstluftwm/panel.sh
