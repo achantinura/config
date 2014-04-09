@@ -1,27 +1,27 @@
 [global_config]
-  window_state = fullscreen
-  scrollbar_position = disabled
   borderless = True
 [keybindings]
-  toggle_zoom = F12
-  search = <Super>f
-  group_tab = <Super>z
-  resize_up = <Alt>Up
-  broadcast_group = <Primary>g
-  resize_left = <Alt>Left
-  split_horiz = <Alt>v
-  broadcast_all = <Primary>a
-  close_term = <Alt>c
-  split_vert = <Alt>h
-  broadcast_off = <Primary>n
-  resize_right = <Alt>Right
-  resize_down = <Alt>Down
+  toggle_zoom = <Alt>f
+  search = F3
+  go_up = <Alt>k
+  split_horiz = <Alt>u
+  broadcast_all = <Super>a
+  go_down = <Alt>j
+  close_term = <Alt>r
+  split_vert = <Alt>o
+  go_right = <Alt>l
+  broadcast_off = <Super>n
+  switch_to_tab_1 = <Primary><Shift>l
+  go_left = <Alt>h
 [profiles]
   [[default]]
     use_system_font = False
-    font = Mono 8
-    icon_bell = False
-    split_to_group = True
+    background_darkness = 0.0
+    background_type = transparent
+    scrollbar_position = hidden
+    show_titlebar = False
+    font = Monospace 8
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
