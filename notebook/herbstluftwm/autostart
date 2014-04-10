@@ -1,0 +1,169 @@
+#!/bin/bash
+
+# this is a simple config for herbstluftwm
+
+function hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+
+xsetroot -solid '#000000'
+
+# remove all existing keybindings
+hc keyunbind --all
+
+# keybindings
+Mod=Super #set super as the modifier key to be used in keybindings
+hc keybind $Mod-Control-q quit
+hc keybind $Mod-Shift-r reload
+hc keybind Alt-F4 close
+hc keybind $Mod-t spawn terminator
+hc keybind $Mod-m spawn thunderbird
+hc keybind $Mod-space spawn dmenu_run  -fn -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-* -nb rgb:00/00/00 -nf rgb:CC/CC/CC -sb rgb:CC/CC/CC -sf rgb:33/33/33
+hc keybind $Mod-Escape spawn slock
+
+# my own keybindings
+hc keybind $Mod-w spawn chromium-browser 
+hc keybind $Mod-e spawn texstudio
+hc keybind $Mod-Up spawn xbacklight -set '100'
+hc keybind $Mod-Down spawn xbacklight -set '0'
+
+# tile background transparency
+hc set frame_bg_transparent "1"
+
+# layouting
+hc set default_frame_layout 3 
+hc keybind $Mod-r remove
+#hc keybind $Mod-space cycle_layout 1
+hc keybind $Mod-u split vertical 0.5
+hc keybind $Mod-o split horizontal 0.5
+hc keybind $Mod-s floating toggle
+hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-p pseudotile toggle
+
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+
+
+# tags
+TAG_NAMES=( {1..9} )
+TAG_KEYS=( {1..9} 0 )
+
+hc rename default "${TAG_NAMES[0]}" || true
+for i in ${!TAG_NAMES[@]} ; do
+    hc add "${TAG_NAMES[$i]}"
+    key="${TAG_KEYS[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Mod-$key" use "${TAG_NAMES[$i]}"
+        hc keybind "$Mod-Shift-$key" move "${TAG_NAMES[$i]}"
+    fi
+done
+
+# hc use 2
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 3
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 4
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 5
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 6
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 7
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 8
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 9
+# hc split horizontal 0.3333
+# hc focus right
+# hc split horizontal 0.5
+# 
+# hc use 1
+# hc focus right
+
+# resizing
+RESIZESTEP=0.0025
+hc keybind $Mod-Control-h resize left +$RESIZESTEP
+hc keybind $Mod-Control-j resize down +$RESIZESTEP
+hc keybind $Mod-Control-k resize up +$RESIZESTEP
+hc keybind $Mod-Control-l resize right +$RESIZESTEP
+
+# mouse
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 resize
+hc mousebind $Mod-Button3 zoom
+synclient HorizEdgeScroll=1 #enable horizontal edge scrolling
+
+# focus
+hc keybind $Mod-BackSpace   cycle_monitor
+hc keybind $Mod-Tab         cycle_all +1
+hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-c cycle
+hc keybind $Mod-h focus left
+hc keybind $Mod-j focus down
+hc keybind $Mod-k focus up
+hc keybind $Mod-l focus right
+hc keybind $Mod-Shift-h shift left
+hc keybind $Mod-Shift-j shift down
+hc keybind $Mod-Shift-k shift up
+hc keybind $Mod-Shift-l shift right
+
+# colors
+hc set frame_border_active_color '#49351D'
+hc set frame_border_normal_color '#73532D'
+#hc set frame_bg_normal_color '#BD9768'
+#hc set frame_bg_active_color '#BD8541'
+hc set frame_bg_normal_color '#ffffff'
+hc set frame_bg_active_color '#ffffff'
+hc set frame_border_width 1
+hc set window_border_width 1 
+hc set window_border_normal_color '#AE8451'
+hc set window_border_active_color '#Ff0000'
+hc set focus_follows_mouse 1
+
+# rules
+hc unrule -F
+hc rule focus=off # normally do not focus new clients
+# give focus to most common terminals
+hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+
+xautolock -time 2 -locker slock -killtime 20 &
+
+#start monitor
+sh $HOME/.config/monitor/monitor.sh
+
+feh --bg-tile $HOME/.config/herbstluftwm/bg.png
+
+#the panel 
+# sh $HOME/.config/herbstluftwm/panel.sh
+
+# padding top for conky
+hc pad 0 10
+
+killall conky
+conky -q /etc/conkyrc
+
+synclient VertScrollDelta=-111

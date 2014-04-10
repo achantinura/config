@@ -1,0 +1,32 @@
+[global_config]
+  borderless = True
+[keybindings]
+  toggle_zoom = <Alt>f
+  search = F3
+  go_up = <Alt>k
+  split_horiz = <Alt>u
+  broadcast_all = <Super>a
+  go_down = <Alt>j
+  close_term = <Alt>r
+  split_vert = <Alt>o
+  go_right = <Alt>l
+  broadcast_off = <Super>n
+  switch_to_tab_1 = <Primary><Shift>l
+  go_left = <Alt>h
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    use_system_font = False
+    font = Monospace 8
+    scrollback_infinite = True
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
