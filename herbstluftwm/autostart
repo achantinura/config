@@ -20,8 +20,8 @@ hc keybind $Mod-Shift-r reload
 hc keybind Alt-F4 close
 hc keybind $Mod-t spawn terminator
 hc keybind $Mod-m spawn thunderbird
-hc keybind $Mod-space spawn dmenu_run  -fn -*-termsyn-medium-*-*-*-14-*-*-*-*-*-*-* -nb rgb:00/00/00 -nf rgb:CC/CC/CC -sb rgb:CC/CC/CC -sf rgb:33/33/33
-hc keybind $Mod-Escape spawn slock
+hc keybind $Mod-space spawn dmenu_run 
+hc keybind $Mod-Escape spawn i3lock -c 000000 -p win 
 
 # my own keybindings
 hc keybind $Mod-w spawn chromium-browser 
@@ -38,7 +38,7 @@ hc keybind $Mod-u split vertical 0.5
 hc keybind $Mod-o split horizontal 0.5
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-p spawn gnome-screenshot -a
 
 hc split horizontal 0.3333
 hc focus right
@@ -164,4 +164,5 @@ sh $HOME/.config/monitor/monitor.sh
 feh --bg-tile $HOME/.config/herbstluftwm/bg.png
 
 #the panel 
-sh $HOME/.config/herbstluftwm/panel.sh
+# sh $HOME/.config/herbstluftwm/panel.sh
+conky -b -q

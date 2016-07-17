@@ -24,6 +24,7 @@ while true; do
 		panelcontent="||| "
 		addpanelcontent $(date)
 		addpanelcontent $(herbstclient tag_status)
+    addpanelcontent "Nächste Bahn in: $(cat /home/croser/.config/herbstluftwm/bahn)"
 		echo "$panelcontent"
 		sleep 1
 done
